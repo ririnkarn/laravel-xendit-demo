@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrderCallbackController;
+use App\Http\Controllers\OrdersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('order', OrdersController::class)->only(['index', 'create', 'store']);
+Route::get('/success', [OrdersController::class, 'success'])->name('success');
+Route::get('/failure', [OrdersController::class, 'failure'])->name('failure');
