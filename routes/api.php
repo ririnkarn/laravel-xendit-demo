@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\XenditController;
+use App\Http\Controllers\OrderCallbackController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/xendit/balance', [XenditController::class, 'getBalance']);
+Route::get('/xendit/transactions', [XenditController::class, 'getTransactions']);
+Route::get('/xendit/transactions/{id}', [XenditController::class, 'showTransactions']);
+Route::get('/xendit/va', [XenditController::class, 'getVAList']);
+Route::post('/xendit/va', [XenditController::class, 'createVA']);
+Route::post('/order/callback', OrderCallbackController::class);
