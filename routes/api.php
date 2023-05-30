@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\XenditController;
+use App\Http\Controllers\DisbursementsController;
 use App\Http\Controllers\OrderCallbackController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,4 @@ Route::get('/xendit/transactions/{id}', [XenditController::class, 'showTransacti
 Route::get('/xendit/va', [XenditController::class, 'getVAList']);
 Route::post('/xendit/va', [XenditController::class, 'createVA']);
 Route::post('/order/callback', OrderCallbackController::class);
+Route::post('/disbursement/callback', [DisbursementsController::class, 'callback']);

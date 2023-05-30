@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DisbursementsController;
 use App\Http\Controllers\OrderCallbackController;
 use App\Http\Controllers\OrdersController;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ Route::get('/', function () {
 Route::resource('order', OrdersController::class)->only(['index', 'create', 'store']);
 Route::get('/success', [OrdersController::class, 'success'])->name('success');
 Route::get('/failure', [OrdersController::class, 'failure'])->name('failure');
+
+Route::resource('disbursement', DisbursementsController::class)->only(['index', 'create', 'store']);
